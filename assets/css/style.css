@@ -1,0 +1,1550 @@
+:root {
+    /* Light Theme Variables */
+    --bg-main: #f8f9fa;
+    --bg-sidebar: #ffffff;
+    --bg-header: #2c3e50;
+    --text-main: #2d3436;
+    --text-muted: #636e72;
+    --accent: #0984e3;
+    --border: #dfe6e9;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    --accent: #0984e3;
+    /* Default blue */
+}
+
+/* Color Presets (Fallbacks) */
+.theme-red {
+    --accent: #d63031;
+}
+
+.theme-green {
+    --accent: #27ae60;
+}
+
+.theme-purple {
+    --accent: #6c5ce7;
+}
+
+.theme-yellow {
+    --accent: #f1c40f;
+}
+
+.theme-orange {
+    --accent: #e67e22;
+}
+
+.theme-blue {
+    --accent: #0984e3;
+}
+
+[data-theme="dark"] {
+    --bg-main: #121212;
+    --bg-sidebar: #1e1e1e;
+    --bg-header: #000000;
+    --text-main: #dfe6e9;
+    --text-muted: #b2bec3;
+    --accent: #74b9ff;
+    --border: #2d3436;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    margin: 0;
+    background: var(--bg-main);
+    color: var(--text-main);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    transition: all 0.3s ease;
+}
+
+/* Top Header */
+header {
+    background: var(--bg-header);
+    color: white;
+    padding: 10px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--shadow);
+    z-index: 1000;
+    z-index: 2000;
+}
+
+.brand {
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #fff;
+}
+
+.user-controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 0.9rem;
+}
+
+/* Navigation */
+nav {
+    background: var(--bg-sidebar);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    padding: 0 20px;
+    box-shadow: var(--shadow);
+    z-index: 1900;
+}
+
+.menu-item {
+    padding: 15px 20px;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--text-main);
+    position: relative;
+    transition: 0.2s;
+}
+
+.menu-item:hover {
+    color: var(--accent);
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.menu-item a:hover {
+    color: var(--accent);
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.menu-item a {
+    text-decoration: none;
+    color: var(--text-main);
+    background: rgba(0, 0, 0, 0.02);
+}
+
+
+/* Mega Submenu */
+/* Compact Mega Submenu */
+.submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: var(--bg-sidebar);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    padding: 12px 15px;
+    /* Reduced padding */
+    min-width: 280px;
+    /* Slimmer default width */
+    gap: 20px;
+    border-radius: 0 0 6px 6px;
+    animation: fadeIn 0.15s ease-out;
+    z-index: 2100;
+}
+
+/* Submenu Link Items - Smaller & Closer */
+.submenu a {
+    display: block;
+    padding: 3px 6px;
+    /* Very tight vertical spacing */
+    color: var(--text-main);
+    text-decoration: none;
+    font-size: 0.85rem;
+    /* Smaller professional font size */
+    line-height: 1.2;
+    /* Tighter text wrapping */
+    border-radius: 3px;
+    transition: all 0.1s ease;
+    white-space: nowrap;
+    /* Prevents awkward wrapping */
+}
+
+.submenu a:hover {
+    background: rgba(9, 132, 227, 0.08);
+    color: var(--accent);
+    padding-left: 10px;
+    /* Subtle slide effect */
+}
+
+.col-header {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--border);
+}
+
+.menu-item:hover .submenu {
+    display: grid;
+}
+
+
+
+.submenu a:hover {
+    padding-left: 5px;
+    color: var(--accent);
+    background: rgba(0, 120, 215, 0.05);
+}
+
+/* Main Area */
+main {
+    flex: 1;
+    padding: 30px;
+    overflow-y: auto;
+}
+
+.module-card {
+    background: var(--bg-sidebar);
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    font-size: 0.7rem;
+}
+
+.ui-widget {
+    font-size: 0.7rem;
+}
+
+.module-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2px;
+}
+
+/* Theme Toggle Switch */
+.theme-toggle {
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+}
+
+footer {
+    padding: 15px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Company Badge next to Logo */
+.company-badge {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    border-left: 3px solid var(--accent);
+}
+
+/* User Dropdown Logic */
+.user-menu-container {
+    position: relative;
+}
+
+.user-trigger {
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background 0.2s;
+    font-weight: 600;
+}
+
+.user-trigger:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.user-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background: var(--bg-sidebar);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    min-width: 160px;
+    border-radius: 6px;
+    z-index: 2000;
+    padding: 8px 0;
+}
+
+.user-dropdown.active {
+    display: block;
+    animation: fadeIn 0.2s ease;
+}
+
+.user-dropdown a {
+    display: block;
+    padding: 8px 15px;
+    text-decoration: none;
+    color: var(--text-main);
+    font-size: 0.85rem;
+    transition: background 0.2s;
+}
+
+#desc-content {
+    white-space: pre-wrap;
+    /* Respects line breaks from the database \r\n */
+    color: var(--text-main);
+}
+
+#current-desc-trigger {
+    display: flex;
+    align-items: center;
+}
+
+.user-dropdown a:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--accent);
+}
+
+/* Ensure this is in your index.html <style> block */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    /* Must be fixed to stay on top of the viewport */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.7);
+    /* Dark semi-transparent backdrop */
+    backdrop-filter: blur(3px);
+    /* Optional: blurs the background module */
+    z-index: 9999;
+    /* Higher than any module content */
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-card {
+    background: var(--bg-sidebar);
+    /* This uses your white/dark variable */
+    color: var(--text-main);
+    width: 90%;
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    /* Prevents content from spilling out */
+}
+
+/* Ensure body doesn't scroll when modal is open */
+body.modal-open {
+    overflow: hidden;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.profile-card {
+    background: var(--bg-sidebar);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+.log-section {
+    margin-top: 30px;
+}
+
+.img-preview {
+    width: 120px;
+    height: 60px;
+    border: 1px dashed var(--border);
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f8f9fa;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.img-preview img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.accent-selector {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.accent-dot {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: 0.2s;
+}
+
+.accent-dot.active {
+    border-color: var(--text-main);
+    transform: scale(1.2);
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+    margin-top: 15px;
+}
+
+.data-table th {
+    text-align: left;
+    padding: 10px;
+    border-bottom: 2px solid var(--border);
+    color: var(--text-muted);
+}
+
+.data-table td {
+    padding: 10px;
+    border-bottom: 1px solid var(--border);
+}
+
+.status-succes {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.status-esec {
+    color: #d63031;
+    font-weight: bold;
+}
+
+/* --- Profile & Form Layouts --- */
+.profile-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10px;
+}
+
+.card {
+    background: var(--bg-sidebar);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    box-shadow: var(--shadow);
+    flex: 1;
+    min-width: 350px;
+}
+
+.card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+    color: var(--accent);
+}
+
+/* #module-content{
+font-size: 6px !important;
+} */
+.form-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.form-row .form-group {
+    flex: 1;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    margin-bottom: 5px;
+}
+
+.form-control-static {
+    padding: 8px 12px;
+    background: var(--bg-main);
+    border-radius: 4px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: 1px solid var(--border);
+}
+
+/* Accent Color Dots */
+.accent-picker {
+    display: flex;
+    gap: 12px;
+    margin-top: 10px;
+}
+
+.dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: transform 0.2s;
+}
+
+.dot:hover {
+    transform: scale(1.1);
+}
+
+.dot.active {
+    border-color: var(--text-main);
+}
+
+/* --- Activity Log Table --- */
+.log-card {
+    margin-top: 25px;
+    width: 100%;
+}
+
+.status-pill {
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.status-succes {
+    background: color-mix(in srgb, #27ae60, transparent 90%);
+    color: #27ae60;
+}
+
+.status-esec {
+    background: color-mix(in srgb, #d63031, transparent 90%);
+    color: #d63031;
+}
+
+.log-table {
+    width: 100%;
+    border-collapse: collapse;
+    /* margin-top: 15px; */
+}
+
+.log-table th {
+    text-align: left;
+    /* padding: 12px 10px; */
+    padding: 7px 10px;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.log-table td {
+    padding: 12px 10px;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.85rem;
+}
+
+.log-table tr:hover {
+    background: rgba(0, 0, 0, 0.01);
+}
+
+
+td.rowColorGREEN,
+tr.rowColorGREEN {
+    background-color: #B1FF49 !important;
+    color: black;
+}
+
+td.rowColorStripeGREEN,
+tr.rowColorStripeGREEN {
+    background: repeating-linear-gradient(to bottom, #B1FF49, #B1FF49 5px, #C11B17 27px);
+    color: black;
+}
+
+td.rowColorStripeGREEN2,
+tr.rowColorStripeGREEN2 {
+    background: repeating-linear-gradient(45deg,
+            /* Angle of the stripes */
+            #B1FF49,
+            /* Start color (lighter green) */
+            #B1FF49 10px,
+            /* End color of the first stripe */
+            lightgreen 10px,
+            /* Start color of the next stripe */
+            lightgreen 20px
+            /* End color of the next stripe */
+        );
+    /* background: repeating-linear-gradient(  to bottom,  #B1FF49,  #B1FF49 5px,  #FFA500 27px); */
+    color: black;
+}
+
+td.rowColorStrongGREEN,
+tr.rowColorStrongGREEN {
+    background-color: #228B22 !important;
+    color: white;
+}
+
+td.rowColorRED,
+tr.rowColorRED {
+    background-color: #C11B17 !important;
+    color: white;
+}
+
+td.rowColorYellow,
+tr.rowColorYellow {
+    background-color: #FFD700 !important;
+    color: black;
+}
+
+td.rowColorOrange,
+tr.rowColorOrange {
+    color: black;
+    background-image: none;
+    background-color: #FFA500 !important;
+}
+
+.ui-widget-content .rowClassYellow {
+    color: black;
+    background-image: none;
+    background-color: #FFD700 !important;
+}
+
+.ui-widget-content .rowClassRed {
+    color: white;
+    background-image: none;
+    background-color: #C11B17 !important;
+}
+
+/* .ui-widget-content .rowClassGreen { color: black;  background-image: none;background-color: #B1FF49 !important; } */
+.ui-widget-content .rowClassGreen {
+    color: black;
+    background-image: none;
+    background-color: #a6e2a6 !important;
+}
+
+.ui-widget-content .rowClassOrange {
+    color: black;
+    background-image: none;
+    background-color: #edd3a3 !important;
+}
+
+.ui-widget-content .rowColorStrongGREEN {
+    color: white;
+    background-image: none;
+    background-color: #228B22 !important;
+}
+
+
+
+
+
+
+
+
+
+
+/* --- Tooltip & Help Icons --- */
+.form-group label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+}
+
+.help-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    background: var(--border);
+    color: var(--text-muted);
+    border-radius: 50%;
+    font-size: 10px;
+    font-weight: bold;
+    cursor: help;
+    transition: all 0.2s ease;
+}
+
+.help-icon:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+/* Custom Tooltip using Attribute */
+[title]:hover::after {
+    content: attr(title);
+    position: absolute;
+    bottom: 125%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #2d3436;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    white-space: normal;
+    width: 200px;
+    z-index: 1000;
+    box-shadow: var(--shadow);
+    text-transform: none;
+    /* Keep help text readable */
+}
+
+
+/* --- Global Module Button Styling --- */
+.action-bar .btn-primary,
+.filter-zone .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 22px;
+
+    /* Default State: Professional & Integrated */
+    background-color: var(--bg-sidebar);
+    color: var(--text-main);
+    border: 1px solid var(--border);
+
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* --- The Uniform Hover State (The "Pop" Effect) --- */
+.action-bar .btn-primary:hover,
+.filter-zone .btn-primary:hover {
+    background-color: var(--accent);
+    /* Everything turns to accent on hover */
+    color: #ffffff;
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px color-mix(in srgb, var(--accent), transparent 70%);
+}
+
+.action-bar .btn-primary:hover i,
+.filter-zone .btn-primary:hover i {
+    transform: scale(1.1);
+}
+
+/* Active/Click State */
+.action-bar .btn-primary:active,
+.filter-zone .btn-primary:active {
+    transform: translateY(0);
+    filter: brightness(0.9);
+}
+
+/* --- High-Visibility Header --- */
+.log-table thead th {
+    /* background-color: #1e272e; Deep dark background for maximum contrast */
+    background: color-mix(in srgb, var(--accent), transparent 98%);
+    color: var(--accent);
+    padding: 16px;
+    text-align: left;
+    border-bottom: 3px solid var(--accent);
+    /* Strong brand line */
+}
+
+
+/* --- Distinct Selected Line --- */
+.log-table tbody tr.selected {
+    background-color: color-mix(in srgb, var(--accent), transparent 92%) !important;
+    position: relative;
+}
+
+.log-table tbody tr.selected td {
+    color: var(--text-main);
+    font-weight: 600;
+    border-top: 1px solid var(--accent);
+    border-bottom: 1px solid var(--accent);
+}
+
+/* Add a vertical "Selected" indicator bar on the left */
+.log-table tbody tr.selected td:first-child {
+    border-left: 4px solid var(--accent);
+}
+
+/* --- 4. Glassmorphism Modal Refinement --- */
+.modal-overlay {
+    backdrop-filter: blur(10px) saturate(180%);
+    -webkit-backdrop-filter: blur(10px) saturate(180%);
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.modal-card {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--border);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    border-radius: 16px;
+}
+
+
+/* --- Grid Row Interactions --- */
+
+/* 1. Hover State: A very light tint of the accent color */
+.log-table tbody tr:hover {
+    background-color: color-mix(in srgb, var(--accent), transparent 92%) !important;
+    cursor: pointer;
+}
+
+/* 2. Selected State: Full Accent Background */
+.log-table tbody tr.selected {
+    background-color: var(--accent) !important;
+    transition: all 0.2s ease;
+}
+
+/* 3. Text Color Adaptation on Selection */
+/* We force the text to white to contrast against the vibrant accent */
+.log-table tbody tr.selected td {
+    color: #ffffff !important;
+    font-weight: 600;
+    border-color: rgba(255, 255, 255, 0.2);
+    /* Soften the internal borders */
+}
+
+/* Maintain icon visibility if you have any in the rows */
+.log-table tbody tr.selected i {
+    color: #ffffff !important;
+}
+
+/* 4. Subtle Glow Effect for the Selected Row */
+.log-table tbody tr.selected {
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure the header stays prominent above the colored rows */
+/* .log-table thead th {
+    background-color: #1e272e;
+    color: #ffffff;
+    z-index: 2;
+    position: sticky;
+    top: 0;
+} */
+
+/* Consistent Button Over State */
+.btn-primary:hover {
+    background-color: var(--accent) !important;
+    color: #fff !important;
+}
+
+/* --- 1. Namespaced Container Logic --- */
+#ux-grid-container {
+    --grid-accent: var(--accent);
+    animation: gridFadeIn 0.5s ease-out;
+}
+
+/* --- 2. Unified Button Design (Applies to Action Bar & Modal) --- */
+#ux-grid-container .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 5px 15px;
+    /* background-color: var(--bg-sidebar);  */
+    color: var(--text-main);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent), transparent 85%);
+    outline: none;
+}
+
+#ux-grid-container .btn-primary:hover {
+    background-color: var(--grid-accent) !important;
+    color: #ffffff !important;
+    border-color: var(--grid-accent) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px color-mix(in srgb, var(--grid-accent), transparent 70%);
+}
+
+/* --- 3. The Modal Fix (Center Screen) --- */
+#ux-grid-container .modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 99999;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(0px);
+    transition: backdrop-filter 0.3s ease;
+}
+
+#ux-grid-container .modal-overlay.active {
+    display: flex;
+    /* Force flex when active */
+    backdrop-filter: blur(8px) saturate(150%);
+}
+
+#ux-grid-container .modal-card {
+    background: var(--bg-sidebar);
+    color: var(--text-main);
+    width: 95%;
+    max-width: 500px;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    /* Animation start state */
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#ux-grid-container .modal-overlay.active .modal-card {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* --- 4. Modal Header (Dark Design) --- */
+#ux-grid-container .modal-card h3 {
+    background-color: #1e272e;
+    /* Your chosen dark header */
+    color: #ffffff;
+    padding: 20px 25px;
+    margin: 0;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 3px solid var(--grid-accent);
+}
+
+/* --- 5. Modal Body & Footer --- */
+#ux-grid-container .modal-body {
+    padding: 25px;
+}
+
+#ux-grid-container .modal-footer {
+    padding: 15px 25px 25px;
+    display: flex;
+    gap: 12px;
+}
+
+/* Modal Inputs Styling */
+#ux-grid-container .form-group input,
+#ux-grid-container .form-group select {
+    width: 100%;
+    padding: 5px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--bg-main);
+    color: var(--text-main);
+}
+
+/* Delete-Specific Modal Styling */
+#ux-grid-container .modal-card.modal-danger h3 {
+    background-color: #d63031 !important;
+    /* Red header for danger */
+    border-bottom: 3px solid rgba(0, 0, 0, 0.2);
+    border-left: 6px solid #b71c1c;
+}
+
+#ux-grid-container .delete-message {
+    padding: 30px;
+    text-align: center;
+    font-size: 1rem;
+}
+
+#ux-grid-container .delete-message i {
+    font-size: 3rem;
+    color: #d63031;
+    margin-bottom: 15px;
+    display: block;
+}
+
+#ux-grid-container .delete-message p {
+    font-size: 1rem;
+    color: var(--text-main);
+    margin: 0;
+}
+
+
+/* Form Styling */
+.form-group {
+    text-align: left;
+    margin-bottom: 2px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-muted);
+}
+
+input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: #ffffff;
+    color: var(--text-main);
+    font-size: 1rem;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent), transparent 85%);
+    outline: none;
+}
+
+
+/* --- Fix the Sticky Header Transparency & Layering --- */
+#ux-grid-container .log-table thead th {
+    position: sticky;
+    top: 0;
+    /* Force a solid, dark background so rows don't show through */
+    background-color: var(--bg-main) !important;
+    color: var(--accent);
+
+    /* Ensure it's above table rows (z=100) but below nav (z=1900) */
+    z-index: 100;
+
+    /* Removes any blur effect that might cause transparency issues */
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+
+    /* Maintain your existing style */
+    padding: 16px;
+    text-align: left;
+    /* box-shadow: 0 2px 5px rgba(0,0,0,0.2); */
+    border-bottom: 3px solid var(--grid-accent);
+}
+
+/* Fix for 'separate' borders to ensure no white gaps during scroll */
+#ux-grid-container .log-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+}
+
+/* Ensure the container is the "parent" of the scroll */
+#ux-grid-container .grid-scroll-container {
+    overflow-y: auto;
+    position: relative;
+    /* Height is controlled by your JSON/JS */
+}
+
+/* Ensure the modal content doesn't exceed the screen height */
+.modal-card {
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    /* Or whatever width fits your design */
+}
+
+/* Make the body scrollable */
+.modal-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 20px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+
+    /* Optional: Custom scrollbar for a cleaner look */
+}
+
+.modal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+/* Keep header and footer fixed at top/bottom */
+#modal-title {
+    padding: 20px;
+    margin: 0;
+}
+
+.modal-footer {
+    padding: 15px;
+}
+
+
+
+
+.ux-grid-instance td.cell-green {
+    background-color: #d4edda !important;
+    color: #155724;
+}
+
+.ux-grid-instance td.cell-amber {
+    background-color: #fff3cd !important;
+    color: #856404;
+}
+
+.ux-grid-instance td.cell-red {
+    background-color: #f8d7da !important;
+    color: #721c24;
+}
+
+/* Row Colors */
+.ux-grid-instance tr.row-green {
+    background-color: #d4edda !important;
+}
+
+.ux-grid-instance tr.row-amber {
+    background-color: #fff3cd !important;
+}
+
+.ux-grid-instance tr.row-red {
+    background-color: #f8d7da !important;
+}
+
+/* Optional: Ensure text color contrasts well */
+.ux-grid-instance tr.row-red td {
+    color: #721c24;
+}
+
+.ux-grid-instance tr.row-amber td {
+    color: #856404;
+}
+
+.ux-grid-instance tr.row-green td {
+    color: #155724;
+}
+
+
+/* --- CUSTOM MULTI-SELECT DROPDOWN STYLES --- */
+
+/* The Container */
+.multi-select-container {
+    position: relative;
+    width: 100%;
+}
+
+/* The Visible Input Box */
+.ms-display {
+    cursor: pointer;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4px 8px !important;
+    min-height: 30px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.ms-display-text {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    flex-grow: 1;
+    margin-right: 10px;
+}
+
+.ms-icon {
+    font-size: 0.7em;
+    color: #999;
+    flex-shrink: 0;
+}
+
+/* The Floating Panel */
+.multi-select-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 2px);
+    left: 0;
+    min-width: 100%;
+    width: max-content;
+    /* Expands to fit the longest option */
+    max-width: 350px;
+    /* Prevents it from getting too wide */
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 9999;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.multi-select-dropdown.active {
+    display: block;
+    /* Toggled by JS */
+}
+
+/* Dropdown Rows */
+.multi-select-dropdown .ms-row {
+    padding: 6px 12px;
+    border-bottom: 1px solid #f1f2f6;
+    transition: background-color 0.2s ease;
+}
+
+.multi-select-dropdown .ms-row:hover {
+    background-color: #f8f9fa;
+}
+
+.multi-select-dropdown .ms-header-row {
+    background-color: #f8f9fa;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 2px solid #e1e1e1;
+}
+
+/* Alignment: Checkbox + Text */
+.multi-select-dropdown label {
+    display: flex;
+    align-items: flex-start;
+    /* Keeps checkbox at the top if text wraps to 2 lines */
+    gap: 8px;
+    margin: 0;
+    cursor: pointer;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    font-weight: normal;
+    color: #2d3436;
+}
+
+.multi-select-dropdown input[type="checkbox"] {
+    margin: 2px 0 0 0;
+    /* Slight push down to align perfectly with text baseline */
+    flex-shrink: 0;
+    /* CRITICAL: Stops the checkbox from squishing */
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+}
+
+.multi-select-dropdown .ms-text {
+    white-space: normal;
+    /* Allows long text to wrap cleanly */
+    word-break: break-word;
+}
+
+/* --- DATE RANGE FILTER GROUP --- */
+.date-range-group {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    height: 30px;
+    /* Matches standard filter inputs */
+    overflow: hidden;
+}
+
+.date-range-group input[type="date"],
+.date-range-group input[type="datetime-local"] {
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    padding: 2px 6px !important;
+    width: 50% !important;
+    height: 100% !important;
+    font-size: 0.8rem;
+    background: transparent;
+    color: #2d3436;
+}
+
+.date-range-group input:focus {
+    outline: none;
+    background-color: #f8f9fa !important;
+}
+
+.date-range-separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f1f2f6;
+    color: #636e72;
+    padding: 0 8px;
+    height: 100%;
+    border-left: 1px solid #e1e1e1;
+    border-right: 1px solid #e1e1e1;
+    font-size: 0.75rem;
+}
+
+
+/* --- GRID CONTAINER & LAYOUT --- */
+.ux-grid-instance {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.ux-filter-zone {
+    padding: 8px 12px;
+    margin-bottom: 10px;
+}
+
+.ux-filter-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: flex-end;
+}
+
+.ux-action-bar {
+    margin: 10px 0;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.ux-action-right {
+    margin-left: auto;
+    display: flex;
+    gap: 10px;
+}
+
+.ux-scroll-container {
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    background: #fff;
+}
+
+/* --- TABLE HEADERS --- */
+/* .log-table th {
+    padding: 12px;
+    border-bottom: 2px solid #eee;
+    cursor: pointer;
+    user-select: none;
+    background-color: #f8f9fa;
+    position: sticky;
+    top: 0;
+    white-space: nowrap;
+} */
+
+.ux-sort-icon {
+    margin-left: 8px;
+    opacity: 0.3;
+}
+
+.ux-sort-icon.active {
+    color: #3498db;
+    opacity: 1;
+}
+
+/* --- FORM ELEMENTS (General) --- */
+.ux-form-group {
+    margin-bottom: 5px;
+    box-sizing: border-box;
+}
+
+.ux-label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.ux-input {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: 0.95rem;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+.ux-input:disabled {
+    background: #eee;
+    cursor: not-allowed;
+}
+
+/* --- FILTER VARIATIONS (Compact) --- */
+.ux-filter-group {
+    margin-bottom: 0;
+    min-width: 150px;
+}
+
+.ux-filter-label {
+    display: block;
+    margin-bottom: 2px;
+    font-weight: 600;
+    font-size: 0.75rem;
+    color: #636e72;
+}
+
+.ux-filter-input {
+    width: 100%;
+    padding: 2px 8px;
+    height: 30px;
+    font-size: 0.85rem;
+    margin-top: 0;
+    box-sizing: border-box;
+}
+
+.ux-filter-btn {
+    height: 30px;
+    padding: 0 15px;
+    font-size: 0.8rem;
+    margin-bottom: 1px;
+}
+
+/* --- DATE RANGE GROUP --- */
+.date-range-container {
+    margin-bottom: 0;
+    min-width: 250px;
+}
+
+.date-range-group {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    height: 30px;
+    overflow: hidden;
+}
+
+.date-range-group input {
+    border: none !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    margin: 0 !important;
+    padding: 2px 6px !important;
+    width: 50% !important;
+    height: 100% !important;
+    font-size: 0.8rem;
+    background: transparent;
+}
+
+.date-range-separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f1f2f6;
+    color: #636e72;
+    padding: 0 8px;
+    height: 100%;
+    border-left: 1px solid #e1e1e1;
+    border-right: 1px solid #e1e1e1;
+}
+
+/* --- CHECKBOXES --- */
+.ux-checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.ux-checkbox-input {
+    width: auto;
+    margin: 0;
+    cursor: pointer;
+}
+
+/* --- PAGINATION --- */
+.ux-pagination {
+    margin-top: 10px;
+    padding: 8px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--bg-sidebar, #f8f9fa);
+    border: 1px solid #ddd;
+    /* fallback for var(--border) */
+    border-radius: 4px;
+}
+
+.ux-pagination-text {
+    font-size: 0.85rem;
+    color: #636e72;
+}
+
+.ux-pagination-controls {
+    display: flex;
+    gap: 5px;
+}
+
+.ux-page-btn {
+    height: 30px;
+    padding: 0 12px;
+}
+
+/* --- MODALS & IMPORT STATS --- */
+.ux-modal-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.ux-import-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.ux-stat-box {
+    padding: 15px;
+    border-radius: 5px;
+}
+
+.ux-stat-box.success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.ux-stat-box.warning {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.ux-stat-number {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.ux-empty-state {
+    text-align: center;
+    padding: 40px;
+    color: #7f8c8d;
+    font-style: italic;
+}
